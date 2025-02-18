@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      
 permissions:
   contents: write
 jobs:
@@ -12,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
